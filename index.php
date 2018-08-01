@@ -389,28 +389,23 @@
 
     <div class="container marketing">
 
-      <!-- Three columns of text below the carousel -->
-      <div class="row">
-        <div class="span4">
-          <img class="circle" src="assets/img/chef1.jpg">
-          <h2>Sanjeev Kapoor</h2>
-          <p>Here we introduce some of the personalities those have proved again that India is a country of foods (and festivals). The compilation is certainly going to be interesting for those have fun in playing with kitchen accessories. Let¡¯s have a look.</p>
-          <p><a class="page-scroll" href="#Reserve"">reserve &raquo;</a></p>
-        </div><!-- /.span4 -->
-        <div class="span4">
-          <img class="circle" src="assets/img/chef2.jpg">
-          <h2>Michel Albert Roux</h2>
-          <p>Michel Roux the best chefs in UK. Michel is currently a 2 star Michelin chef at Le Gavroche. Born on 23rd May 1960, Michel found himself in a family of food lovers and a chef (His father). He took his first chef job and spent 2 years working under his father. Prior to that Michel had spent his early adult life training with the French Army. </p>
-          <p><a class="page-scroll" href="#Reserve"">reserve &raquo;</a></p>
-        </div><!-- /.span4 -->
-        <div class="span4">
-          <img class="circle" src="assets/img/chef3.jpg">
-          <h2>Raymond Blanc</h2>
-          <p>Raymond Blanc is another popular and successful chef in UK which is why he makes to the list of top chefs in the UK. Born on 19th November 1949, Raymond has achieved a lot as a chef despite starting out with no formal training.</p>
-          <p><a class="page-scroll" href="#Reserve"">reserve &raquo;</a></p>
-        </div><!-- /.span4 -->
-      </div><!-- /.row -->
+      <!-- columns of text below the carousel -->
+      <div class="row" id="display">
 
+      </div><!-- /.row -->
+		<?php 
+			if($_SESSION['PHP_AUTH_TYPE'] == "admin"){
+				echo '<div class="col-md-8 col-sm-offset-2 text-center" style="border-style: outset">
+				     Select img: <input id="file-upload" type="file">     
+				     <br />
+				     Name: <input id="ChefName" type="text">   
+				     <br />
+				     Description: <input id="Description" type="text">   
+				     <br />
+					<button class="btn btn-default" onclick="addChef()">Add Chef</button>
+					</div><!-- /.col-md-8 col-sm-offset-2 text-center -->';
+			}
+		?>
 
       <!-- START THE FEATURETTES -->
 
@@ -446,34 +441,15 @@
        <h1  id="Reserve">Reservation</h1>
        <form action="confirmOrder.php" method="post">
        <h2>Step1: Pick a Chef</h1>
-      	<div class="row">
-        <div class="span4">
-          <img class="circle" src="assets/img/chef1.jpg">
-          <h2>Sanjeev Kapoor</h2>
-          	<label>
-          		<input style="position:relative; top:-3px;" type="radio" value="Sanjeev Kapoor" name="chef"> Pick him
-       		</label>
-        </div><!-- /.span4 -->
-        <div class="span4">
-          <img class="circle" src="assets/img/chef2.jpg">
-          <h2>Michel Albert Roux</h2>
-          	<label>
-          		<input style="position:relative; top:-3px;" type="radio" value="Michel Albert Roux" name="chef"> Pick him
-       		</label>
-        </div><!-- /.span4 -->
-        <div class="span4">
-          <img class="circle" src="assets/img/chef3.jpg">
-          <h2>Raymond Blanc</h2>
-          	<label>
-          		<input style="position:relative; top:-3px;" type="radio" value="Raymond Blanc" name="chef"> Pick him
-       		</label>
-        </div><!-- /.span4 -->
-      </div><!-- /.row -->
+      	<div class="row" id="pickChef">
+      	
+     	</div><!-- /.row -->
+     	
       <h2>Step2: Pick a Time</h1>
       <div class="container">
             <div class="form-group">
                 <label for="dtp_input1" class="col-md-2 control-label"></label>
-                <div class="input-group date form_datetime col-md-5" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                <div class="input-group date form_datetime col-md-5" id="date" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
                     <input class="form-control" size="16" type="text" value="" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 					<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
@@ -561,5 +537,32 @@
       }(window.jQuery)
     </script>
     <script src="assets/js/holder/holder.js"></script>
+    <script src="assets/myjs/addChef.js"></script>
+    <?php 
+	    if($_SESSION['PHP_AUTH_TYPE'] == "admin"){
+	    	$file = "adminlist";
+	    }
+	    else{
+	    	$file = "list";
+	    }
+    	$js = '<script src="assets/myjs/' . $file . '" type="text/javascript"></script>' . "\n";
+    	echo $js;
+    ?>
+<!--     <script src="assets/myjs/list.js"></script> -->
+    <script src="assets/myjs/pick.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-database.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyA_LhS4_7haSlWSTOsxG1QvSL2PY-njjsk",
+	    authDomain: "csci4145-project.firebaseapp.com",
+	    databaseURL: "https://csci4145-project.firebaseio.com",
+	    projectId: "csci4145-project",
+	    storageBucket: "csci4145-project.appspot.com",
+	    messagingSenderId: "526450568274"
+	  };
+	  firebase.initializeApp(config);
+	</script>
   </body>
 </html>
