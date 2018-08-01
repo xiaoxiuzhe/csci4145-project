@@ -42,10 +42,29 @@ $('document').ready(function(){
     		var t3 = document.createTextNode("Delete");       // Create a text node
     		deleteBtn.appendChild(t3);  
     		deleteBtn.onclick = function(){
-    				var key = childSnapshot.key;
-    				var ref = firebase.database().ref("chefs");
-    				ref.child(key).remove();
-    				location.reload();
+    			
+    			var pieces =  img.split("/");
+    			var img_id = pieces[pieces.length-1].split(".")[0];
+    			
+    			var formData = new FormData();
+    			formData.append('img_id', img_id);
+    			
+    			var xhr = new XMLHttpRequest();
+    			
+    		    xhr.open('DELETE', "http://localhost:8888", true);
+    		    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    		    xhr.setRequestHeader('Content-Type','multipart/form-data; boundary=----7dd322351017c');
+    		    xhr.send(img_id);
+
+    		    xhr.onreadystatechange = function(e) {
+    		        if (xhr.readyState == 4 && xhr.status == 200) {
+	        				var key = childSnapshot.key;
+	        				var ref = firebase.database().ref("chefs");
+	        				ref.child(key).remove();
+	        				location.reload();
+    		            }
+    		        };
+    		        
     			};
     		deleteBtn.className = "btn btn-default";
     		
