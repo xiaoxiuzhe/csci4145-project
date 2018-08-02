@@ -213,6 +213,7 @@
                 				<li><a href="myprofile.php">MyProfile</a></li>';
                 	}
                 ?>
+                <li><a class="page-scroll" href="index.php#ContectUs">Contect Us</a></li>
               </ul>
               <ul class="nav" style="float:right">
               	<?php 

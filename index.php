@@ -26,6 +26,7 @@
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <!--<link href="assets/css/scrolling-nav.css" rel="stylesheet"> -->
     <style>
 
@@ -330,6 +331,7 @@
                 				<li><a href="myprofile.php">MyProfile</a></li>';
                 	}
                 ?>
+                <li><a class="page-scroll" href="#ContectUs">Contect Us</a></li>
               </ul>
               <ul class="nav" style="float:right">
               <?php 
@@ -437,6 +439,71 @@
 
       <!-- /END THE FEATURETTES -->
       
+              <!-- Contect Us -->
+       <h1  id="ContectUs">Contect Us</h1>
+		    <style>
+		      #map-container {
+		        width: 100%;
+		        height: 400px;
+		        background-color: grey;
+		      }
+		    </style>
+		    <div id="map-container"></div>
+			    <script>
+					// Initialize and add the map
+					function initMap() {
+					  // The location of Uluru
+					  var uluru = {lat: 44.636597, lng: -63.5917};
+					  // The map, centered at Uluru
+					  var map = new google.maps.Map(
+					      document.getElementById('map-container'), {zoom: 18, center: uluru});
+					  // The marker, positioned at Uluru
+					  var marker = new google.maps.Marker({position: uluru, map: map});
+					}
+			    </script>
+			    <script async defer
+			    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGzLG1tnsjH0k2Fpi-qauF-ea5kx35Gj8&callback=initMap">
+			    </script>
+			    
+				<hr class="divider">
+			    <section id="contact" >
+			       <div class="container">
+			           <div class="row">
+			             <div class="span4">
+			               <div class="card border-0">
+			                  <div class="card-body text-center">
+			                    <i class="fa fa-phone fa-5x mb-3" aria-hidden="true"></i>
+			                    <h4 class="text-uppercase mb-5">call us</h4>
+			                    <p>(902)-123-1234</p>
+			                  </div>
+			                </div>
+			             </div>
+			             <div class="span4">
+			               <div class="card border-0">
+			                  <div class="card-body text-center">
+			                    <i class="fa fa-map-marker fa-5x mb-3" aria-hidden="true"></i>
+			                    <h4 class="text-uppercase mb-5">office loaction</h4>
+			                   <address>6299 South St, Halifax, NS B3H 4R2 </address>
+			                  </div>
+			                </div>
+			             </div>
+			             <div class="span4">
+			               <div class="card border-0">
+			                  <div class="card-body text-center">
+			                    <i class="fa fa-globe fa-5x mb-3" aria-hidden="true"></i>
+			                    <h4 class="text-uppercase mb-5">email</h4>
+			                    <p>CSCI4145@gmail.com</p>
+			                  </div>
+			                </div>
+			             </div>
+			           </div>
+			       </div>
+			    </section>
+
+       <!-- END OF Contect Us -->
+       <hr class="featurette-divider">
+       
+       
         <!-- RESERVATION -->
        <h1  id="Reserve">Reservation</h1>
        <form action="confirmOrder.php" method="post">
@@ -460,7 +527,8 @@
 	 <input class="btn btn-large btn-primary" type="submit" value="Submit" onclick="return Validate()"/>
 	</form>
      <!-- END OF RESERVATION -->
-		
+     
+	<hr class="divider">
 
       <!-- FOOTER -->
       <footer>
