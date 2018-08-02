@@ -10,7 +10,8 @@
 
     <!-- Le styles -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">    
+   
     <style>
 
     /* GLOBAL STYLES
@@ -27,6 +28,87 @@
 		color:#fff
 	}
 
+	.blog-comment::before,
+	.blog-comment::after,
+	.blog-comment-form::before,
+	.blog-comment-form::after{
+	    content: "";
+		display: table;
+		clear: both;
+	}
+	
+	.blog-comment{
+	    padding-left: 15%;
+		padding-right: 15%;
+	}
+	
+	.blog-comment ul{
+		list-style-type: none;
+		padding: 0;
+	}
+	
+	.blog-comment img{
+		opacity: 1;
+		filter: Alpha(opacity=100);
+		-webkit-border-radius: 4px;
+		   -moz-border-radius: 4px;
+		  	 -o-border-radius: 4px;
+				border-radius: 4px;
+	}
+	
+	.blog-comment img.avatar {
+		position: relative;
+		float: left;
+		margin-left: 0;
+		margin-top: 0;
+		width: 65px;
+		height: 65px;
+	}
+	
+	.blog-comment .post-comments{
+		border: 1px solid #eee;
+	    margin-bottom: 20px;
+	    margin-left: 85px;
+		margin-right: 0px;
+	    padding: 10px 20px;
+	    position: relative;
+	    -webkit-border-radius: 4px;
+	       -moz-border-radius: 4px;
+	       	 -o-border-radius: 4px;
+	    		border-radius: 4px;
+		background: #fff;
+		color: #6b6e80;
+		position: relative;
+	}
+	
+	.blog-comment .meta {
+		font-size: 13px;
+		color: #aaaaaa;
+		padding-bottom: 8px;
+		margin-bottom: 10px !important;
+		border-bottom: 1px solid #eee;
+	}
+	
+	.blog-comment ul.comments ul{
+		list-style-type: none;
+		padding: 0;
+		margin-left: 85px;
+	}
+	
+	.blog-comment-form{
+		padding-left: 15%;
+		padding-right: 15%;
+		padding-top: 40px;
+	}
+	
+	.blog-comment h3,
+	.blog-comment-form h3{
+		margin-bottom: 40px;
+		font-size: 26px;
+		line-height: 30px;
+		font-weight: 800;
+	}
+	      
 
     /* CUSTOMIZE THE NAVBAR
     -------------------------------------------------- */
@@ -75,7 +157,7 @@
     /* CUSTOMIZE THE Header
     -------------------------------------------------- */
 	.header-wrapper{
-		background-image:url('assets/img/food.jpg');
+		background-image:url('assets/img/comment.jpg');
 		background-position:center;
 		background-repeat:no-repeat ;
 		background-size:100% 100%; 
@@ -84,7 +166,6 @@
 		margin:0 auto;
 		text-align:center;
 	}    
-    
 
     /* RESPONSIVE CSS
     -------------------------------------------------- */
@@ -113,13 +194,6 @@
         margin: 0 auto 20px;
       }
     }
-	.menu-wrapper{
-		width:80%;
-		height:90%;
-		margin:10px 10% auto 10%;
-
-		 text-align: center;
-	}
 	.header-wrapper{
 		width:100%;
 		height:500px;
@@ -132,6 +206,22 @@
 		max-width:500px;
 	}
 
+	.blog-comment .post-comments{
+	border: 1px solid #eee;
+    margin-bottom: 20px;
+    margin-left: 0px;
+	margin-right: 0px;
+    padding: 5px 10px;
+    position: relative;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+       	 -o-border-radius: 4px;
+    		border-radius: 4px;
+	background: #fff;
+	color: #6b6e80;
+	position: relative;
+	}
+	
     @media (max-width: 767px) {
 
       .navbar-inner {
@@ -146,13 +236,6 @@
         font-size: 18px;
         line-height: 1.5;
       }
-	.menu-wrapper{
-		width:80%;
-		height:90%;
-		margin:10px 10% auto 10%;
-		text-align: center;
-		 
-	}
 	.header-wrapper{
 		width:100%;
 		height:300px;
@@ -162,6 +245,22 @@
 		position: relative;
 		top:150px;
 		max-width:500px;
+	}
+	
+	.blog-comment .post-comments{
+	border: 1px solid #eee;
+    margin-bottom: 20px;
+    margin-left: 0px;
+	margin-right: 0px;
+    padding: 5px 10px;
+    position: relative;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+       	 -o-border-radius: 4px;
+    		border-radius: 4px;
+	background: #fff;
+	color: #6b6e80;
+	position: relative;
 	}
     </style>
 
@@ -201,7 +300,7 @@
             <div class="nav-collapse collapse" >
               <ul class="nav nav-pills">
                 <li ><a href="index.php">Home</a></li>                
-                <li class="active"><a href="#Menu">Menu</a></li>
+                <li><a href="Menu.php">Menu</a></li>
                 <li><a href="index.php#Reserve">Reserve</a></li>
                 <?php 
                 	if($_SESSION['PHP_AUTH_TYPE'] == "admin"){
@@ -214,7 +313,7 @@
                 	}
                 ?>
                 <li><a class="page-scroll" href="index.php#ContectUs">Contect Us</a></li>
-                <li><a class="page-scroll" href="comment.php">Comment</a></li>
+                <li class="active"><a class="page-scroll" href="comment.php">Comment</a></li>
               </ul>
               <ul class="nav" style="float:right">
               	<?php 
@@ -236,33 +335,80 @@
       </div> <!-- /.container -->
     </div><!-- /.navbar-wrapper -->
 
-     <!-- header
+         <!-- header
     ================================================== -->
     <div class="header-wrapper">
     	<div class="header-inner">
-    		<h1 style="color:white">SEASONAL MENU 2018 </h1>
+    		<h1>To help serve you better...</h1>
     	</div>
     </div>
     
-    
-    <!-- Menu
+     <!-- Comment
     ================================================== -->
-    <div style="width:100%;height:100%">
-    	<div class="menu-wrapper">
-    		<img src="assets/img/menu.png" alt="" style:"width: 100%; height: 100%; vertical-align: middle;">
-    	</div>
-    </div>
-
-	<hr class="divider">
-
+	<div class="container">
+	
+		<div class="container bootstrap snippet">
+		    <div class="row">
+				<div class="col-md-12">
+				    <div class="blog-comment">
+						<h3>Comments</h3>
+		                <hr/>
+						<ul class="comments" id="commentArea">						
+						
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+		<div class="container pb-cmnt-container">
+		    <div class="row">
+		        <div class="col-md-6 col-md-offset-3">
+		            <div class="panel panel-info">
+		                <div class="panel-body">
+		                
+		                    <textarea placeholder="Write your comment here!" class="pb-cmnt-textarea" id="Comment"></textarea>
+		                    <?php 
+		                    	$name = '';
+		                    	if($_SESSION['PHP_AUTH_TYPE'] == "admin" || $_SESSION['PHP_AUTH_TYPE'] == "user"){
+		                    		$name = $_SESSION['PHP_AUTH_USER'];
+		                    	}
+		                    ?>
+		                    <button class="btn btn-primary pull-right" onclick="Share(<?php echo $name?>)">Share</button>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		
+		<style>
+		    .pb-cmnt-container {
+		        font-family: Lato;
+		        margin-top: 100px;
+		    }
+		
+		    .pb-cmnt-textarea {
+		        resize: none;
+		        padding: 20px;
+		        height: 130px;
+		        width: 100%;
+		        border: 1px solid #F2F2F2;
+		    }
+		</style>
+	
+	
+	</div><!-- /container -->
+    
+    
       <!-- FOOTER -->
       <footer>
-      	<hr>
-        <p class="pull-right"> <a class="page-scroll" href="#">Back to top</a></p>
+        <p class="pull-right"><a href="#">Back to top</a></p>
         <p>copyright &copy; xiuzhe xiao &middot; </p>
       </footer>
 
     </div><!-- /.container -->
+
 
 
     <!-- Le javascript
@@ -281,6 +427,21 @@
     <script src="assets/js/bootstrap-collapse.js"></script>
     <script src="assets/js/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap-typeahead.js"></script>
-    <script src="assets/js/scrolling-nav.js"></script>
+    <script src="assets/myjs/comments.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-database.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyA_LhS4_7haSlWSTOsxG1QvSL2PY-njjsk",
+	    authDomain: "csci4145-project.firebaseapp.com",
+	    databaseURL: "https://csci4145-project.firebaseio.com",
+	    projectId: "csci4145-project",
+	    storageBucket: "csci4145-project.appspot.com",
+	    messagingSenderId: "526450568274"
+	  };
+	  firebase.initializeApp(config);
+	</script>
   </body>
 </html>
+    

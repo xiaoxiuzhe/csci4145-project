@@ -332,6 +332,7 @@
                 	}
                 ?>
                 <li><a class="page-scroll" href="#ContectUs">Contect Us</a></li>
+                <li><a class="page-scroll" href="comment.php">Comment</a></li>
               </ul>
               <ul class="nav" style="float:right">
               <?php 
@@ -439,7 +440,7 @@
 
       <!-- /END THE FEATURETTES -->
       
-              <!-- Contect Us -->
+       <!-- Contect Us -->
        <h1  id="ContectUs">Contect Us</h1>
 		    <style>
 		      #map-container {
@@ -559,7 +560,6 @@
     <script src="assets/js/bootstrap-collapse.js"></script>
     <script src="assets/js/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap-typeahead.js"></script>
-	<script src="assets/js/scrolling-nav.js"></script>
 	<script src="assets/js/jquery.easing.min.js"></script>
 	<script type="text/javascript" src="assets/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 	<script type="text/javascript" src="assets/js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
@@ -616,7 +616,6 @@
     	$js = '<script src="assets/myjs/' . $file . '" type="text/javascript"></script>' . "\n";
     	echo $js;
     ?>
-<!--     <script src="assets/myjs/list.js"></script> -->
     <script src="assets/myjs/pick.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-database.js"></script>

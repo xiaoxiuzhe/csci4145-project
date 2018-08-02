@@ -27,9 +27,9 @@ function addChef(){
 //    	alert("chef added, please refresh the page")
 		var response = JSON.parse(xhr.responseText);
 		var url = response.secure_url;
-		  var messageListRef = firebase.database().ref("chefs");
-		  var newMessageRef = messageListRef.push();
-		  newMessageRef.set({
+		  var ref = firebase.database().ref("chefs");
+		  var newRef = ref.push();
+		  newRef.set({
 		    'ChefName': name,
 			'Description': description,
 			'img' : url

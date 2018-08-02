@@ -2,8 +2,8 @@ $('document').ready(function(){
 	
 	var size = "w_460,h_280,c_scale";
 	
-	var messageListRef = firebase.database().ref("chefs");
-	messageListRef.once('value', function(snapshot) {
+	var ref = firebase.database().ref("chefs");
+	ref.once('value', function(snapshot) {
 		  snapshot.forEach(function(childSnapshot) {
 			
 			//create a container in the home page that will display chef' info
