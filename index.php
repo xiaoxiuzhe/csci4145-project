@@ -608,10 +608,10 @@
     <script src="assets/myjs/addChef.js"></script>
     <?php 
 	    if($_SESSION['PHP_AUTH_TYPE'] == "admin"){
-	    	$file = "adminlist";
+	    	$file = "adminlist.js";
 	    }
 	    else{
-	    	$file = "list";
+	    	$file = "list.js";
 	    }
     	$js = '<script src="assets/myjs/' . $file . '" type="text/javascript"></script>' . "\n";
     	echo $js;

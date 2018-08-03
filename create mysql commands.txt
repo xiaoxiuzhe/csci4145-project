@@ -1,0 +1,37 @@
+CREATE SCHEMA `csci4145-project` ;
+
+
+CREATE TABLE `csci4145-project`.`users` (
+  `id` INT(11) NOT NULL COMMENT '',
+  `username` VARCHAR(45) NOT NULL COMMENT '',
+  `email` VARCHAR(45) NOT NULL COMMENT '',
+  `phone` VARCHAR(45) NOT NULL COMMENT '',
+  `password` VARCHAR(45) NOT NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC)  COMMENT '')
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+
+INSERT INTO `csci4145-project`.`users` (`id`, `username`, `email`, `phone`, `password`) VALUES ('1', '\'admin\'', '\'xz345513@dal.ca\'', '\'6478897499\'', 'f7b13bddea328801360191325773ab68');
+
+
+
+CREATE TABLE `csci4145-project`.`reservations` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
+  `username` VARCHAR(45) NOT NULL COMMENT '',
+  `useremail` VARCHAR(45) NOT NULL COMMENT '',
+  `userphone` VARCHAR(45) NOT NULL COMMENT '',
+  `chef` VARCHAR(45) NOT NULL COMMENT '',
+  `date` VARCHAR(45) NOT NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+
+ALTER TABLE `csci4145-project`.`users` 
+CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '' ;
